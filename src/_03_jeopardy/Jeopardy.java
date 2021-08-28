@@ -66,12 +66,14 @@ public class Jeopardy implements ActionListener {
 		quizPanel.add(firstButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
+		//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
+
 
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
 		secondButton = createButton("400");
 		// 10. Add the secondButton to the quizPanel
-		quizPanel.add(secondButton)
+		quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
 		firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
