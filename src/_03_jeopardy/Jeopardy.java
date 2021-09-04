@@ -35,7 +35,7 @@ import javax.swing.JPanel;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton, fithButton;
+	private JButton thirdButton, fourthButton, fifthButton;
 	private JPanel quizPanel;
 	private int score = 0;
 	private JLabel scoreBox = new JLabel("0");
@@ -79,8 +79,14 @@ public class Jeopardy implements ActionListener {
 		secondButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 		thirdButton = createButton("600");
+		thirdButton.addActionListener(this);
 		fourthButton = createButton("800");
-		fithButton = createButton("1000");
+		fourthButton.addActionListener(this);
+		fifthButton = createButton("1000");
+		fifthButton.addActionListener(this);
+		quizPanel.add(thirdButton);
+		quizPanel.add(fourthButton);
+		quizPanel.add(fifthButton);
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
 		
 		 /*
@@ -99,14 +105,14 @@ public class Jeopardy implements ActionListener {
 	private JButton createButton(String dollarAmount) {
 		
 		// Create a new JButton
-
+		JButton button = new JButton();
 		// Set the text of the button to the dollarAmount
-
+		button.setText(dollarAmount);
 		// Increment the buttonCount (this should make the layout vertical)
-
+		buttonCount += 1;
 		// Return your new button instead of the temporary button
-
-		return new JButton("temporary button");
+		
+		return button;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -117,7 +123,7 @@ public class Jeopardy implements ActionListener {
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
 		if (buttonPressed == firstButton) {
-			askQuestion("is the sky blue?", "yes", 400);
+			askQuestion("is the sky blue?", "yes", 200);
 		}
 			// Call the askQuestion() method
  
@@ -125,13 +131,27 @@ public class Jeopardy implements ActionListener {
 
 		// If the buttonPressed was the secondButton
 		if (buttonPressed == secondButton) {
-			askQuestion("are eggs round?", "no", 800);
-			secondButton.setText("");
+			askQuestion("are eggs round?", "no", 400);
+			
 		}
+		if (buttonPressed == thirdButton) {
+			askQuestion("do cats bark?", "no", 600);
+			
+		}
+		if (buttonPressed == fourthButton) {
+			askQuestion("Is water solid?", "no", 800);
+			
+		}
+		if (buttonPressed == fifthButton) {
+			askQuestion("Do apples fall?", "yes", 1000);
+			
+		}
+		
+		
 			// Call the askQuestion() method with a harder question
 
 		// Clear the text on the button that was pressed (set the button text to nothing)
-
+		buttonPressed.setText("");
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
@@ -155,7 +175,7 @@ public class Jeopardy implements ActionListener {
 		// Otherwise
 		if (!answer.equals(correctAnswer)) {
 			score -= prizeMoney;
-			JOptionPane.showMessageDialog(null, "You are incorrect, the correct answer was: "correctAnswer);
+			JOptionPane.showMessageDialog(null, "You are incorrect, the correct answer was: " + correctAnswer);
 		}
 			// Decrement the score by the prizeMoney
 
